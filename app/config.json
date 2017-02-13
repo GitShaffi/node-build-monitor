@@ -1,22 +1,25 @@
 {
   "monitor": {
-    "interval": 5000,
-    "numberOfBuilds": 12,
+    "interval": 30000,
+    "numberOfBuilds": 25,
     "latestBuildOnly": false,
     "sortOrder": "date",
     "debug": true
   },
   "services": [
     {
-      "name": "Travis",
+      "name": "GitLab",
       "configuration": {
-        "slug": "marcells/bloggy"
-      }
-    },
-    {
-      "name": "Travis",
-      "configuration": {
-        "slug": "marcells/node-build-monitor"
+        "url": "",
+        "token": "",
+        "slugs": [],
+        "intervals": {
+          "disabled": 3600000,
+          "empty": 60000,
+          "default": 60000
+        },
+        "branch": "master",
+        "debug": true
       }
     }
   ]

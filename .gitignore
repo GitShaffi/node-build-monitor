@@ -1,3 +1,6 @@
 node_modules/
 *.sublime-workspace
 log.txt
+.DS_Store
+app/.DS_Store
+app/services/.DS_Store

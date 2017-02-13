@@ -309,6 +309,7 @@ module.exports = function () {
         requestFirstPage(function (page, per_page) {
             return getProjectBuildsApiUrl(project, page, per_page);
         }, function (results) {
+            results = results.filter((build) => build.ref === self.config.branch);
             async.mapSeries(results, function(build, pass) {
                 build.monitor = getBuildMonitorBuild(project, build);
                 build.expires = getBuildExpiration(build);
@@ -339,8 +340,8 @@ module.exports = function () {
               fetchProjectBuilds(project, function(results) {
                   var i, build, builds = {};
                   for (i = 0; i < results.length; i = i + 1) {
-                      build = results[i];
-                      builds[build.monitor.id] = build;
+                        build = results[i];
+                        builds[build.monitor.id] = build;
                   }
                   if (Object.keys(builds).length) {
                       project.builds = builds;
@@ -420,7 +421,7 @@ module.exports = function () {
                     updateProject(project);
                 });
             }
-
+                
             // Iterate through already cached builds for the project
             async.mapSeries(Object.keys(project.builds),
                             function(key, pass) {

@@ -153,7 +153,7 @@ module.exports = function () {
                   return;
                 }
 
-                if(self.configuration.latestBuildOnly) {
+                if(self.configuration.latestBuildOnly && pluginBuilds.length > 0) {
                     Array.prototype.push.apply(allBuilds, [pluginBuilds.shift()]);
                 }
                 else {
